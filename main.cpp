@@ -35,7 +35,7 @@ Naveen Islam
                 
                 // restock simulation
                     // check stock levels. If the item has reached below a certain threshold, then add a specified amount to the stock
-                    // (if) move items from out of stock to in stock after restock
+                    // (if necessary) move items from out of stock to in stock after restock
                 
                 // discount simulation
                     // select items either randomly or based off most sold item from in stock list to discount list
