@@ -12,7 +12,7 @@ Naveen Islam
 // function to simulate inventory management over the 52 week period
     // paramenters: map of the clothing items, intervals for the months
 
-// define main function
+// define main
     // initialize a map that stores the different clothing items which are associated with an array of lists (in stock, discount, or out of stock)
 
     // read data from a file containing information on the items and input them to the map
@@ -33,4 +33,13 @@ Naveen Islam
                     // update the revenue based on how many items are sold that week
                 
                 // restock simulation
-                    // check stock levels. If the item has reached below a certain threshold, then add a 
+                    // check stock levels. If the item has reached below a certain threshold, then add a specified amount to the stock
+                    // (if) move items from out of stock to in stock after restock
+                
+                // discount simulation
+                    // select items either randomly or based off most sold item from in stock list to discount list
+                    // adjust the price assigned to the item to a discount item price
+
+            // display the summary for the week
+
+// end of main
