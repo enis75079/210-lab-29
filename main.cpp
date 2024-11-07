@@ -16,8 +16,7 @@ using namespace std;
 
 // structure for storing the clothing item
 struct Item {
-    string name;
-    string clothingType;
+    string type;
 };
 
 // function prototypes
@@ -30,9 +29,9 @@ int main() {
     // initialize a map that stores the different clothing items which are associated with an array of lists (in stock, discount, or out of stock)
     map<string, list<Item>> inventory;
 
-    inventory["in_stock"].push_back({"Shirt"});
-    inventory["discount"].push_back({"Pants"});
-    inventory["out_stock"].push_back({"Shoes"});
+    inventory["in_stock"].push_back(Item{"Shirt"});
+    inventory["discount"].push_back(Item{"Pants"});
+    inventory["out_stock"].push_back(Item{"Shoes"});
 
 
     // read data from a file containing information on the items and input them to the map
@@ -76,7 +75,7 @@ void simInventory(map<string, list<Item>>& inventory, int week) {
         // then update all items
         for (auto& type : inventory) {
             // perform some task that gives the type of item
-            cout << "" << type.first << endl;
+            cout << type.first << endl;
 
             for (auto& item : type.second) {
                 // perform some task that will display information useful to managing
