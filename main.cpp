@@ -11,6 +11,7 @@ Naveen Islam
 #include <map>
 #include <list>
 #include <string>
+#include <fstream>
 using namespace std;
 
 // structure for storing the clothing item
@@ -21,11 +22,13 @@ struct Item {
 
 // function prototypes
 // function to simulate inventory management over the 52 week period
-    // paramenters: map of the clothing items, intervals for the months
+// paramenters: map of the clothing items, intervals for the months
+void simInventory(map<string, list<Item>>&, int);
 
 // define main
 int main() {
     // initialize a map that stores the different clothing items which are associated with an array of lists (in stock, discount, or out of stock)
+    map<string, list<Item> inventory;
 
     // read data from a file containing information on the items and input them to the map
         // for each line, the file will specify the clothing type (shirt, pants, or shoe) and the details of the item
