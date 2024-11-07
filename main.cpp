@@ -42,5 +42,5 @@ Naveen Islam
                     // adjust the price assigned to the item to a discount item price
 
             // display the summary for the week
-
+    // return 0
 // end of main
