@@ -7,9 +7,18 @@ Naveen Islam
 */
 
 // headers for file handling, data structures, strings, and more
+#include <iostream>
+#include <map>
+#include <list>
+#include <string>
+using namespace std;
+
+// structure for storing the clothing item
+struct Item {
+
+}
 
 // function prototypes
-
 // function to simulate inventory management over the 52 week period
     // paramenters: map of the clothing items, intervals for the months
 
