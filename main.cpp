@@ -15,14 +15,16 @@ using namespace std;
 
 // structure for storing the clothing item
 struct Item {
-
-}
+    string name;
+    string clothingType;
+};
 
 // function prototypes
 // function to simulate inventory management over the 52 week period
     // paramenters: map of the clothing items, intervals for the months
 
 // define main
+int main() {
     // initialize a map that stores the different clothing items which are associated with an array of lists (in stock, discount, or out of stock)
 
     // read data from a file containing information on the items and input them to the map
@@ -53,3 +55,4 @@ struct Item {
             // display the summary for the week
     // return 0
 // end of main
+}
