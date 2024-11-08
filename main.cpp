@@ -3,36 +3,37 @@
 lab29: Project Proposal, Pseudocode, & Mockup
 COMSC-210
 Naveen Islam
+** I WAS CODING ON A DIFFERENT DEVICE (MAC) AND RAN INTO SOME ISSUES SO I SWITCHED BACK TO MY MAIN COMPUTER. SO SOME OF THE CODE COPIED FROM MY ORIGINAL APLHA
 
 */
 
 // headers for file handling, data structures, strings, and more
 #include <iostream>
 #include <map>
+#include <vector>
 #include <list>
 #include <string>
 #include <fstream>
 using namespace std;
 
-// structure for storing the clothing item
+// struct for item name and type
 struct Item {
+    string name;
     string type;
 };
 
 // function prototypes
 // function to simulate inventory management over the 52 week period
 // paramenters: map of the clothing items, intervals for the months
-void simInventory(map<string, list<Item>>&, int);
+void simInventory();
 
 // define main
 int main() {
     // initialize a map that stores the different clothing items which are associated with an array of lists (in stock, discount, or out of stock)
-    map<string, list<Item>> inventory;
-
-    inventory["in_stock"].push_back(Item{"Shirt"});
-    inventory["discount"].push_back(Item{"Pants"});
-    inventory["out_stock"].push_back(Item{"Shoes"});
-
+    map<string, vector<Item>> inventory;
+    string name;
+    string type;
+    string stock;
 
     // read data from a file containing information on the items and input them to the map
         // for each line, the file will specify the clothing type (shirt, pants, or shoe) and the details of the item
@@ -40,7 +41,6 @@ int main() {
 
     // close the file
     // begin a simulation for managing inventory
-    simInventory(inventory, 52);
         // 52 time intervals (per week)
             //  iterate through each clothing item in the map
                 

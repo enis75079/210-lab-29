@@ -1,0 +1,3 @@
+T-Shirt Shirts in_stock
+Jeans Pants discount
+RunningShoes Shoes out_stock
