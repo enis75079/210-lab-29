@@ -26,6 +26,7 @@ struct Item {
 // function to simulate inventory management over the 52 week period
 // paramenters: map of the clothing items, intervals for the months
 void simInventory();
+void searchType();
 
 // define main
 int main() {
@@ -40,10 +41,14 @@ int main() {
     // for each line, the file will specify the clothing type (shirt, pants, or shoe) and the details of the item
     while (items >> name >> type >> stock) {
         inventory[stock].push_back(Item{name, type});
-    }
+    }    
 
     for (const auto& x : inventory) {
         cout << x.first << endl;
+        for (const auto& y : x.second) {
+            cout << y.name << endl;
+            cout << y.type << endl;
+        }
     }
         // inserts the item into their appropriate list in the array for its item
 
