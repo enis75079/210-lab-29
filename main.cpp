@@ -30,13 +30,21 @@ void simInventory();
 // define main
 int main() {
     // initialize a map that stores the different clothing items which are associated with an array of lists (in stock, discount, or out of stock)
-    map<string, vector<Item>> inventory;
+    map<string, vector<Item> > inventory;
     string name;
     string type;
     string stock;
 
     // read data from a file containing information on the items and input them to the map
-        // for each line, the file will specify the clothing type (shirt, pants, or shoe) and the details of the item
+    ifstream items("items.txt");
+    // for each line, the file will specify the clothing type (shirt, pants, or shoe) and the details of the item
+    while (items >> name >> type >> stock) {
+        inventory[stock].push_back(Item{name, type});
+    }
+
+    for (const auto& x : inventory) {
+        cout << x.first << endl;
+    }
         // inserts the item into their appropriate list in the array for its item
 
     // close the file
@@ -62,6 +70,7 @@ int main() {
 
             // display the summary for the week
     // return 0
+    return 0;
 // end of main
 }
 
