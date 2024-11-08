@@ -62,27 +62,7 @@ int main() {
 
             // display the summary for the week
     // return 0
-    return 0;
 // end of main
 }
 
 // simInventory function. function to simulate the inventory
-void simInventory(map<string, list<Item>>& inventory, int week) {
-    // loops for the parameter weeks (in this case, 52)
-    int i = 0;
-    while (i != week) {
-        // for each item in inventory, check inventory, or mark discounts and out of stock items
-        // then update all items
-        for (auto& type : inventory) {
-            // perform some task that gives the type of item
-            cout << type.first << endl;
-
-            for (auto& item : type.second) {
-                // perform some task that will display information useful to managing
-                cout << item.name << endl;
-            }
-        }
-        i++;
-    }
-
-}
