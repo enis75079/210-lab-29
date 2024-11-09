@@ -27,6 +27,7 @@ struct Item {
 // paramenters: map of the clothing items, intervals for the months
 void simInventory();
 void inventorySize(map<string, vector<Item> >);
+void specificStatus(map<string, vector<Item> >);
 
 // define main
 int main() {
@@ -52,13 +53,20 @@ int main() {
         }
     }
 
-    while (userChoice != 2) {
+    while (userChoice != 3) {
         cout << "Management Mode: " << endl;
         cout << "[1] Total Inventory" << endl;
-        cout << "[2] Quit" << endl;
+        cout << "[2] Specific Inventory Stock" << endl;
+        cout << "[3] Quit" << endl;
+        cout << "Choice: ";
+        cin >> userChoice;
+        cout << endl;
         if (userChoice == 1) {
             inventorySize(inventory);
+            cout << endl;
         } else if (userChoice == 2) {
+            
+        } else if (userChoice == 3) {
             cout << "Have A Nice Day!" << endl;
         }    
     }
