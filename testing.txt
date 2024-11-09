@@ -15,23 +15,38 @@ implemented smoothly.*/
 #include <fstream>
 using namespace std;
 
+// function prototype
 void inventorySize(map<string, vector<Item> >);
 
+// driver program
 int main() {
     map<string, vector<Item> > test;
     string name;
     string type;
     string status;
 
+    // reads from file "items.txt"
     ifstream items("items.txt");
+
+    // push back all items into the test map
     while (items >> name >> type >> status) {
-        inventory[status].push_back(Item{name, type});
+        test[status].push_back(Item{name, type});
     }  
 
+    // tests whether the map has properly been filled
+    for (const auto& x : inventory) {
+        cout << x.first << " ";
+        for (const auto& y : x.second) {
+            cout << y.name << " " << y.type << endl;
+        }
+    }
+
+    // calls the inventorySize function
     inventorySize(test);
     return 0;
 }
 
+// inventorySize function
 void inventorySize(map<string, vector<Item> > test) {
     cout << test.size() << endl;
 }
