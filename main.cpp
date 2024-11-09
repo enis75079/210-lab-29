@@ -117,12 +117,14 @@ void inventorySize(map<string, vector<Item> > inventory) {
 // specifcStatus function. similar to inventorySize where it finds the inventory count for a specific status
 void specificStatus(string status, map<string, vector<Item> > inventory) {
     string chosenStatus = status;
-    int total;
+    int total = 0;
     auto it = inventory.find(chosenStatus);
-    if (it != inventory.end()) {
-        total++;
+    while (it != inventory.end()) {
+        if (it != inventory.end()) {
+            total++;
+        }
+        cout << total << endl;
+        cout << "test" << endl;
     }
-    cout << total << endl;
-    cout << "test" << endl;
 }
 // simInventory function. function to simulate the inventory
