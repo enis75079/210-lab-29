@@ -54,6 +54,7 @@ int main() {
     }
 
     while (userChoice != 3) {
+        // displays the management interface
         cout << "Management Mode: " << endl;
         cout << "[1] Total Inventory" << endl;
         cout << "[2] Specific Inventory Stock" << endl;
@@ -62,9 +63,11 @@ int main() {
         cin >> userChoice;
         cout << endl;
         if (userChoice == 1) {
+            // displays the total inventory
             inventorySize(inventory);
             cout << endl;
         } else if (userChoice == 2) {
+            // asks user for the specific type of clothing's stock
             int stockChoice = 0;
             cout << "[1] In Stock" << endl;
             cout << "[2] Discount" << endl;
@@ -79,6 +82,7 @@ int main() {
                 specificStatus("out_stock", inventory);
             }
         } else if (userChoice == 3) {
+            // quit
             cout << "Have A Nice Day!" << endl;
         }    
     }
@@ -127,6 +131,5 @@ void specificStatus(string status, map<string, vector<Item> > inventory) {
         }
     }
     cout << total << endl;
-    cout << "test" << endl;
 }
 // simInventory function. function to simulate the inventory
