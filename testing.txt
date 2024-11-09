@@ -4,3 +4,34 @@ testing.txt
 and implementation is correct so that when I input it into my alpha or beta code, it'll be 
 implemented smoothly.*/
 
+// here this driver program is testing whether a file is properly read, the creation and implementation
+// of a map, and calling a function with a map parameter
+
+#include <iostream>
+#include <map>
+#include <vector>
+#include <list>
+#include <string>
+#include <fstream>
+using namespace std;
+
+void inventorySize(map<string, vector<Item> >);
+
+int main() {
+    map<string, vector<Item> > test;
+    string name;
+    string type;
+    string status;
+
+    ifstream items("items.txt");
+    while (items >> name >> type >> status) {
+        inventory[status].push_back(Item{name, type});
+    }  
+
+    inventorySize(test);
+    return 0;
+}
+
+void inventorySize(map<string, vector<Item> > test) {
+    cout << test.size() << endl;
+}
