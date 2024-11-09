@@ -1,0 +1,52 @@
+testing.txt
+
+/*unit testing will allow me to preview functions and check to make sure that all the code 
+and implementation is correct so that when I input it into my alpha or beta code, it'll be 
+implemented smoothly.*/
+
+// here this driver program is testing whether a file is properly read, the creation and implementation
+// of a map, and calling a function with a map parameter
+
+#include <iostream>
+#include <map>
+#include <vector>
+#include <list>
+#include <string>
+#include <fstream>
+using namespace std;
+
+// function prototype
+void inventorySize(map<string, vector<Item> >);
+
+// driver program
+int main() {
+    map<string, vector<Item> > test;
+    string name;
+    string type;
+    string status;
+
+    // reads from file "items.txt"
+    ifstream items("items.txt");
+
+    // push back all items into the test map
+    while (items >> name >> type >> status) {
+        test[status].push_back(Item{name, type});
+    }  
+
+    // tests whether the map has properly been filled
+    for (const auto& x : inventory) {
+        cout << x.first << " ";
+        for (const auto& y : x.second) {
+            cout << y.name << " " << y.type << endl;
+        }
+    }
+
+    // calls the inventorySize function
+    inventorySize(test);
+    return 0;
+}
+
+// inventorySize function
+void inventorySize(map<string, vector<Item> > test) {
+    cout << test.size() << endl;
+}

@@ -3,44 +3,92 @@
 lab29: Project Proposal, Pseudocode, & Mockup
 COMSC-210
 Naveen Islam
+** I WAS CODING ON A DIFFERENT DEVICE (MAC) AND RAN INTO SOME ISSUES SO I SWITCHED BACK TO MY MAIN COMPUTER. SO SOME OF THE CODE COPIED FROM MY ORIGINAL APLHA
 
 */
 
 // headers for file handling, data structures, strings, and more
 #include <iostream>
 #include <map>
+#include <vector>
 #include <list>
 #include <string>
 #include <fstream>
 using namespace std;
 
-// structure for storing the clothing item
+// struct for item name and type
 struct Item {
+    string name;
     string type;
 };
 
 // function prototypes
 // function to simulate inventory management over the 52 week period
 // paramenters: map of the clothing items, intervals for the months
-void simInventory(map<string, list<Item>>&, int);
+void simInventory();
+void inventorySize(map<string, vector<Item> >);
+void specificStatus(string, map<string, vector<Item> >);
 
 // define main
 int main() {
     // initialize a map that stores the different clothing items which are associated with an array of lists (in stock, discount, or out of stock)
-    map<string, list<Item>> inventory;
-
-    inventory["in_stock"].push_back(Item{"Shirt"});
-    inventory["discount"].push_back(Item{"Pants"});
-    inventory["out_stock"].push_back(Item{"Shoes"});
-
+    map<string, vector<Item> > inventory;
+    string name;
+    string type;
+    string status;
+    int userChoice = 0;
 
     // read data from a file containing information on the items and input them to the map
-        // for each line, the file will specify the clothing type (shirt, pants, or shoe) and the details of the item
-        // inserts the item into their appropriate list in the array for its item
+    ifstream items("items.txt");
+    // for each line, the file will specify the clothing type (shirt, pants, or shoe) and the details of the item
+    while (items >> name >> type >> status) {
+        inventory[status].push_back(Item{name, type});
+    }    
+
+    // displays the items from the file and outputs them in a formatted fashion
+    for (const auto& x : inventory) {
+        cout << x.first << " ";
+        for (const auto& y : x.second) {
+            cout << y.name << " " << y.type << endl;
+        }
+    }
+
+    while (userChoice != 3) {
+        // displays the management interface
+        cout << "Management Mode: " << endl;
+        cout << "[1] Total Inventory" << endl;
+        cout << "[2] Specific Inventory Stock" << endl;
+        cout << "[3] Quit" << endl;
+        cout << "Choice: ";
+        cin >> userChoice;
+        cout << endl;
+        if (userChoice == 1) {
+            // displays the total inventory
+            inventorySize(inventory);
+            cout << endl;
+        } else if (userChoice == 2) {
+            // asks user for the specific type of clothing's stock
+            int stockChoice = 0;
+            cout << "[1] In Stock" << endl;
+            cout << "[2] Discount" << endl;
+            cout << "[3] Out of Stock" << endl;
+            cout << "Choice: ";
+            cin >> stockChoice;
+            if (stockChoice == 1) {
+                specificStatus("in_stock", inventory);
+            } else if (stockChoice == 2) {
+                specificStatus("discount", inventory);
+            } else if (stockChoice == 3) {
+                specificStatus("out_stock", inventory);
+            }
+        } else if (userChoice == 3) {
+            // quit
+            cout << "Have A Nice Day!" << endl;
+        }    
+    }
 
     // close the file
     // begin a simulation for managing inventory
-    simInventory(inventory, 52);
         // 52 time intervals (per week)
             //  iterate through each clothing item in the map
                 
@@ -65,24 +113,23 @@ int main() {
     return 0;
 // end of main
 }
-
-// simInventory function. function to simulate the inventory
-void simInventory(map<string, list<Item>>& inventory, int week) {
-    // loops for the parameter weeks (in this case, 52)
-    int i = 0;
-    while (i != week) {
-        // for each item in inventory, check inventory, or mark discounts and out of stock items
-        // then update all items
-        for (auto& type : inventory) {
-            // perform some task that gives the type of item
-            cout << type.first << endl;
-
-            for (auto& item : type.second) {
-                // perform some task that will display information useful to managing
-                cout << item.name << endl;
-            }
-        }
-        i++;
-    }
-
+// inventorySize function. if the manager wants to access their total stock
+void inventorySize(map<string, vector<Item> > inventory) {
+    cout << inventory.size() << endl;
 }
+
+// specifcStatus function. similar to inventorySize where it finds the inventory count for a specific status
+void specificStatus(string status, map<string, vector<Item> > inventory) {
+    string chosenStatus = status;
+    int total = 0;
+    auto it = inventory.find(chosenStatus);
+    cout << endl;
+    if (it != inventory.end()) {
+        for (const auto x : it->second) {
+            total++;
+        }
+    }
+    cout << total << endl;
+    cout << endl;
+}
+// simInventory function. function to simulate the inventory
