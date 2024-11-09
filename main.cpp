@@ -65,7 +65,7 @@ int main() {
             inventorySize(inventory);
             cout << endl;
         } else if (userChoice == 2) {
-            
+            specificStatus(inventory);
         } else if (userChoice == 3) {
             cout << "Have A Nice Day!" << endl;
         }    
@@ -100,5 +100,17 @@ int main() {
 // inventorySize function. if the manager wants to access their total stock
 void inventorySize(map<string, vector<Item> > inventory) {
     cout << inventory.size() << endl;
+}
+
+// specifcStatus function. similar to inventorySize where it finds the inventory count for a specific status
+void specificStatus(map<string, vector<Item> > inventory) {
+    string chosenStatus;
+    int total;
+    auto it = inventory.find(chosenStatus);
+    if (it != inventory.end()) {
+        total++;
+    }
+
+    cout << "test" << endl;
 }
 // simInventory function. function to simulate the inventory
