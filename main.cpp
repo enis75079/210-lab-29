@@ -35,6 +35,7 @@ int main() {
     string name;
     string type;
     string status;
+    int userChoice = 0;
 
     // read data from a file containing information on the items and input them to the map
     ifstream items("items.txt");
@@ -51,9 +52,16 @@ int main() {
         }
     }
 
-    // to get how many items are in the inventory
-    cout << inventory.size() << endl;
-    inventorySize(inventory);
+    while (userChoice != 2) {
+        cout << "Management Mode: " << endl;
+        cout << "[1] Total Inventory" << endl;
+        cout << "[2] Quit" << endl;
+        if (userChoice == 1) {
+            inventorySize(inventory);
+        } else if (userChoice == 2) {
+            cout << "Have A Nice Day!" << endl;
+        }    
+    }
 
     // close the file
     // begin a simulation for managing inventory
