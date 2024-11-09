@@ -27,7 +27,7 @@ struct Item {
 // paramenters: map of the clothing items, intervals for the months
 void simInventory();
 void inventorySize(map<string, vector<Item> >);
-void specificStatus(map<string, vector<Item> >);
+void specificStatus(string, map<string, vector<Item> >);
 
 // define main
 int main() {
@@ -65,7 +65,19 @@ int main() {
             inventorySize(inventory);
             cout << endl;
         } else if (userChoice == 2) {
-            specificStatus(inventory);
+            int stockChoice = 0;
+            cout << "[1] In Stock" << endl;
+            cout << "[2] Discount" << endl;
+            cout << "[3] Out of Stock" << endl;
+            cout << "Choice: ";
+            cin >> stockChoice;
+            if (stockChoice == 1) {
+                specificStatus("in_stock", inventory);
+            } else if (stockChoice == 2) {
+                specificStatus("discount", inventory);
+            } else if (stockChoice == 3) {
+                specificStatus("out_stock", inventory);
+            }
         } else if (userChoice == 3) {
             cout << "Have A Nice Day!" << endl;
         }    
@@ -103,14 +115,14 @@ void inventorySize(map<string, vector<Item> > inventory) {
 }
 
 // specifcStatus function. similar to inventorySize where it finds the inventory count for a specific status
-void specificStatus(map<string, vector<Item> > inventory) {
-    string chosenStatus;
+void specificStatus(string status, map<string, vector<Item> > inventory) {
+    string chosenStatus = status;
     int total;
     auto it = inventory.find(chosenStatus);
     if (it != inventory.end()) {
         total++;
     }
-
+    cout << total << endl;
     cout << "test" << endl;
 }
 // simInventory function. function to simulate the inventory
