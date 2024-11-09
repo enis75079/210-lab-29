@@ -123,13 +123,13 @@ void specificStatus(string status, map<string, vector<Item> > inventory) {
     string chosenStatus = status;
     int total = 0;
     auto it = inventory.find(chosenStatus);
+    cout << endl;
     if (it != inventory.end()) {
         for (const auto x : it->second) {
-            cout << endl;
             total++;
-            cout << endl;
         }
     }
     cout << total << endl;
+    cout << endl;
 }
 // simInventory function. function to simulate the inventory

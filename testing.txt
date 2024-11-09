@@ -1,0 +1,6 @@
+testing.txt
+
+/*unit testing will allow me to preview functions and check to make sure that all the code 
+and implementation is correct so that when I input it into my alpha or beta code, it'll be 
+implemented smoothly.*/
+
