@@ -216,7 +216,10 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
 
     if (userAvail == 1) {
         inventory["in_stock"].push_back(newItem);
+    } else if (userAvail == 2) {
+        inventory["discount"].push_back(newItem);
+    } else if (userAvail == 3) {
+        inventory["out_stock"].push_back(newItem);
     }
-
 
 }
