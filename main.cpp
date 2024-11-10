@@ -204,27 +204,31 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
     // make a new item with the user's parameters
     Item newItem;
     string stock = "";
+    string cType  = "";
     newItem.name = userName;
     if (userType == 1) {
-        newItem.type = "Shirts";
+        cType = "Shirts";
+        newItem.type = cType;
     } else if (userType == 2) {
-        newItem.type = "Pants";
+        cType = "Pants";
+        newItem.type = cType;
     } else if (userType == 3) {
-        newItem.type = "Shoes";
+        cType = "Shoes";
+        newItem.type = cType;
     }
 
     if (userAvail == 1) {
-        stock = "In Stock";
-        inventory["in_stock"].push_back(newItem);
+        stock = "in_stock";
+        inventory[stock].push_back(newItem);
     } else if (userAvail == 2) {
-        stock = "Discount";
-        inventory["discount"].push_back(newItem);
+        stock = "discount";
+        inventory[stock].push_back(newItem);
     } else if (userAvail == 3) {
-        stock = "Out of Stock";
-        inventory["out_stock"].push_back(newItem);
+        stock = "out_stock";
+        inventory[stock].push_back(newItem);
     }
 
-    
-
-    cout << "New Item: " << userName << " (" << stock << ")" << endl; 
+    ofstream file("items.txt");
+    file << userName << " " << cType << " " << stock << endl;
+    cout << "New Item: " << cType << " (" << stock << ")" << endl; 
 }
