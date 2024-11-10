@@ -54,8 +54,9 @@ int main() {
             cout << "\nManagement Mode: " << "(week: " << week << ")" << endl;
             cout << "[1] Total Inventory" << endl;
             cout << "[2] Specific Inventory Stock" << endl;
-            cout << "[3] Next Week" << endl;
-            cout << "[4] Quit Early" << endl;
+            cout << "[3] Add Item" << endl;
+            cout << "[4] Next Week" << endl;
+            cout << "[5] Quit Early" << endl;
             cout << "Choice: ";
             cin >> userChoice;
             cout << endl;
@@ -82,11 +83,14 @@ int main() {
                     specificStatus("out_stock", inventory);
                 }
             } else if (userChoice == 3) {
+                cout << "Clothing Type: "<< endl
+                cout << "";
+            } else if (userChoice == 4) {
                 // continue to next week
                 simInventory(inventory);
                 cout << "Starting week:" << (week + 1) << " " << endl;
                 nextWeek = true;
-            } else if (userChoice == 4) {
+            } else if (userChoice == 5) {
                 // terminates the program early
                 cout << "Ended on week: " << (week + 1) << endl;
                 return 0;
@@ -173,3 +177,5 @@ void simInventory(map<string, vector<Item> >& inventory) {
     }
     cout << endl;
 }
+
+// addItem function. creates an item and adds it to the map based off the user's choices
