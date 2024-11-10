@@ -1,6 +1,6 @@
 /*
 
-lab29: 
+lab31: Beta Release
 COMSC-210
 Naveen Islam
 
@@ -23,8 +23,6 @@ struct Item {
 };
 
 // function prototypes
-// function to simulate inventory management over the 52 week period
-// paramenters: map of the clothing items, intervals for the months
 void simInventory(map<string, vector<Item> >&);
 void inventorySize(map<string, vector<Item> >);
 void specificStatus(string, map<string, vector<Item> >);
@@ -191,6 +189,8 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
     string stock = "";
     string cType  = "";
     newItem.name = userName;
+
+    // assigns a type to the item dependent on the number chosen in the add item menu
     if (userType == 1) {
         cType = "Shirts";
         newItem.type = cType;
@@ -202,6 +202,7 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
         newItem.type = cType;
     }
 
+    // assigns a status to the item dependent on the number chosen in the add item menu
     if (userAvail == 1) {
         stock = "in_stock";
         inventory[stock].push_back(newItem);
@@ -213,6 +214,8 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
         inventory[stock].push_back(newItem);
     }
     cout << endl;
+
+    // opens the items text file and appends the item properly structured
     ofstream file("items.txt", ios::app);
     file << userName << " " << cType << " " << stock << endl;
     file.close();
