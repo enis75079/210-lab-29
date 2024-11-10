@@ -94,9 +94,8 @@ int main() {
                 
                 cout << endl;
                 string itemName = "";
-                cout << "Name of the product: ";
-                getline(cin, itemName);
-                cin.ignore();
+                cout << "Name of the product: (no spaces) ";
+                cin >> itemName;
 
                 cout << endl;
                 int availability = 0;
@@ -106,8 +105,7 @@ int main() {
                 cout << "[3] Out of Stock" << endl; 
                 cout << "Choice: ";
                 cin >> availability;
-
-            
+                addItem(itemName, typeChoice, availability, inventory);
             } else if (userChoice == 4) {
                 // continue to next week
                 simInventory(inventory);
@@ -216,15 +214,17 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
     }
 
     if (userAvail == 1) {
-        stock = "in_stock";
-        inventory[stock].push_back(newItem);
+        stock = "In Stock";
+        inventory["in_stock"].push_back(newItem);
     } else if (userAvail == 2) {
-        stock = "discount";
-        inventory[stock].push_back(newItem);
+        stock = "Discount";
+        inventory["discount"].push_back(newItem);
     } else if (userAvail == 3) {
-        stock = "out_stock";
-        inventory[stock].push_back(newItem);
+        stock = "Out of Stock";
+        inventory["out_stock"].push_back(newItem);
     }
 
-    cout << "New Item: " << userName << "(" << stock << ")" << endl; 
+    
+
+    cout << "New Item: " << userName << " (" << stock << ")" << endl; 
 }
