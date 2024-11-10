@@ -28,7 +28,7 @@ struct Item {
 void simInventory(map<string, vector<Item> >&);
 void inventorySize(map<string, vector<Item> >);
 void specificStatus(string, map<string, vector<Item> >);
-void
+void addItem(string, int, int, map<string, vector<Item> >&);
 
 // define main
 int main() {
@@ -106,6 +106,8 @@ int main() {
                 cout << "[3] Out of Stock" << endl; 
                 cout << "Choice: ";
                 cin >> availability;
+
+            
             } else if (userChoice == 4) {
                 // continue to next week
                 simInventory(inventory);
@@ -200,3 +202,21 @@ void simInventory(map<string, vector<Item> >& inventory) {
 }
 
 // addItem function. creates an item and adds it to the map based off the user's choices
+void addItem(string userName, int userType, int userAvail, map<string, vector<Item> >& inventory) {
+    // make a new item with the user's parameters
+    Item newItem;
+    newItem.name = userName;
+    if (userType == 1) {
+        newItem.type = "Shirts";
+    } else if (userType == 2) {
+        newItem.type = "Pants";
+    } else if (userType == 3) {
+        newItem.type = "Shoes";
+    }
+
+    if (userAvail == 1) {
+        inventory["in_stock"].push_back(newItem);
+    }
+
+
+}
