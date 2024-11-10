@@ -52,41 +52,44 @@ int main() {
             cout << y.name << " " << y.type << endl;
         }
     }
-
-    while (userChoice != 3) {
-        // displays the management interface
-        cout << "Management Mode: " << endl;
-        cout << "[1] Total Inventory" << endl;
-        cout << "[2] Specific Inventory Stock" << endl;
-        cout << "[3] Quit" << endl;
-        cout << "Choice: ";
-        cin >> userChoice;
-        cout << endl;
-        if (userChoice == 1) {
-            // displays the total inventory
-            inventorySize(inventory);
-            cout << endl;
-        } else if (userChoice == 2) {
-            // asks user for the specific type of clothing's stock
-            int stockChoice = 0;
-            cout << "[1] In Stock" << endl;
-            cout << "[2] Discount" << endl;
-            cout << "[3] Out of Stock" << endl;
+    
+    for (int week = 1; week <= 52; week++) {
+        while (userChoice != 3) {
+            // displays the management interface
+            cout << "Management Mode: " << endl;
+            cout << "[1] Total Inventory" << endl;
+            cout << "[2] Specific Inventory Stock" << endl;
+            cout << "[3] Next Week" << endl;
             cout << "Choice: ";
-            cin >> stockChoice;
-            if (stockChoice == 1) {
-                specificStatus("in_stock", inventory);
-            } else if (stockChoice == 2) {
-                specificStatus("discount", inventory);
-            } else if (stockChoice == 3) {
-                specificStatus("out_stock", inventory);
+            cin >> userChoice;
+            cout << endl;
+            if (userChoice == 1) {
+                // displays the total inventory
+                inventorySize(inventory);
+                cout << endl;
+            } else if (userChoice == 2) {
+                // asks user for the specific type of clothing's stock
+                int stockChoice = 0;
+                cout << "[1] In Stock" << endl;
+                cout << "[2] Discount" << endl;
+                cout << "[3] Out of Stock" << endl;
+                cout << "Choice: ";
+                cin >> stockChoice;
+                if (stockChoice == 1) {
+                    specificStatus("in_stock", inventory);
+                } else if (stockChoice == 2) {
+                    specificStatus("discount", inventory);
+                } else if (stockChoice == 3) {
+                    specificStatus("out_stock", inventory);
+                }
+            } else if (userChoice == 3) {
+                // continue to next week
+                cout << "Starting week:" << week << " " << endl;
+                continue;
+            } else {
+                cout << "Invalid input. Program has been terminated." << endl;
+                break;
             }
-        } else if (userChoice == 3) {
-            // quit
-            cout << "Have A Nice Day!" << endl;
-        } else {
-            cout << "Invalid input. Program has been terminated." << endl;
-            break;
         }
     }
 
