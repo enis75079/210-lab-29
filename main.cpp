@@ -46,6 +46,8 @@ int main() {
         inventory[status].push_back(Item{name, type});
     }    
     
+    // begin a simulation for managing inventory
+    // 52 time intervals (per week)
     for (int week = 1; week <= 52; week++) {
         bool nextWeek = false;
         int userChoice = 0;
@@ -84,6 +86,7 @@ int main() {
                     specificStatus("out_stock", inventory);
                 }
             } else if (userChoice == 3) {
+                // add item menu
                 int typeChoice = 0;
                 cout << "Clothing Type: "<< endl;
                 cout << "[1] Shirts" << endl; 
@@ -105,6 +108,8 @@ int main() {
                 cout << "[3] Out of Stock" << endl; 
                 cout << "Choice: ";
                 cin >> availability;
+                
+                // calls the addItem function
                 addItem(itemName, typeChoice, availability, inventory);
             } else if (userChoice == 4) {
                 // continue to next week
@@ -122,29 +127,6 @@ int main() {
             }
         }
     }
-
-    // close the file
-    // begin a simulation for managing inventory
-        // 52 time intervals (per week)
-            //  iterate through each clothing item in the map
-                
-                // for each item, simulate weekly margin
-
-                // simulate customers purchasing items
-                    // determine how many items are sold for each item randomly
-                    // move items that are sold from their list (in stock) to out of stock
-                    // assign discounts based on customer purchasing habits...
-                    // update the revenue based on how many items are sold that week
-                
-                // restock simulation
-                    // check stock levels. If the item has reached below a certain threshold, then add a specified amount to the stock
-                    // (if necessary) move items from out of stock to in stock after restock
-                
-                // discount simulation
-                    // select items either randomly or based off most sold item from in stock list to discount list
-                    // adjust the price assigned to the item to a discount item price
-
-            // display the summary for the week
     // return 0
     return 0;
 // end of main
@@ -174,6 +156,7 @@ void simInventory(map<string, vector<Item> >& inventory) {
 
     int sold = rand() % (inventory["in_stock"].size() + 1);
     int restock = rand() % (inventory["out_stock"].size() + 1);
+    // sumamry of the items sold
     cout << "Sold: " << sold << " item(s)" << endl;
 
     // simulates purchases. erases an item from the "in_stock" status, and puts that item into the "out_stock" status
@@ -185,6 +168,8 @@ void simInventory(map<string, vector<Item> >& inventory) {
         inventory["out_stock"].push_back(soldItem);
         cout << "=> " <<soldItem.name << " (" << soldItem.type << ")" << endl;
     }
+
+    // summary of the items restocked
     cout << "Restocked " << restock << " item(s)" << endl;
 
     // simulates restocking. erases an item from the "out_stock" status, and puts that item into the "in_stock" status
