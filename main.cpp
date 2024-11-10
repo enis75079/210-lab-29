@@ -84,7 +84,10 @@ int main() {
         } else if (userChoice == 3) {
             // quit
             cout << "Have A Nice Day!" << endl;
-        }    
+        } else {
+            cout << "Invalid input. Program has been terminated." << endl;
+            break;
+        }
     }
 
     // close the file
