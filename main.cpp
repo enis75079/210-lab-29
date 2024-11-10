@@ -205,6 +205,7 @@ void simInventory(map<string, vector<Item> >& inventory) {
 void addItem(string userName, int userType, int userAvail, map<string, vector<Item> >& inventory) {
     // make a new item with the user's parameters
     Item newItem;
+    string stock = "";
     newItem.name = userName;
     if (userType == 1) {
         newItem.type = "Shirts";
@@ -215,11 +216,15 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
     }
 
     if (userAvail == 1) {
-        inventory["in_stock"].push_back(newItem);
+        stock = "in_stock";
+        inventory[stock].push_back(newItem);
     } else if (userAvail == 2) {
-        inventory["discount"].push_back(newItem);
+        stock = "discount";
+        inventory[stock].push_back(newItem);
     } else if (userAvail == 3) {
-        inventory["out_stock"].push_back(newItem);
+        stock = "out_stock";
+        inventory[stock].push_back(newItem);
     }
 
+    cout << "New Item: " << userName << "(" << stock << ")" << endl; 
 }
