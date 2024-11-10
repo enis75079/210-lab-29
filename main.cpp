@@ -14,6 +14,7 @@ Naveen Islam
 #include <list>
 #include <string>
 #include <fstream>
+#include <ctime>
 using namespace std;
 
 // struct for item name and type
@@ -95,11 +96,13 @@ int main() {
                 nextWeek = true;
             } else if (userChoice == 4) {
                 // terminates the program early
+                simInventory(inventory);
                 cout << "Ended on week: " << (week + 1) << endl;
+                return 0;
             } else {
                 // if user inputs a value that doesnt correspond with the management prompt
                 cout << "Invalid input. Program has been terminated." << endl;
-                break;
+                return 0;
             }
         }
     }
@@ -150,3 +153,9 @@ void specificStatus(string status, map<string, vector<Item> > inventory) {
     cout << endl;
 }
 // simInventory function. function to simulate the inventory
+void simInventory(map<string, vector<Item> >& inventory) {
+    srand(time(0));
+
+    int sold = rand() % (inventory["in_stock"].size());
+    cout << "Sold: " << sold << endl;
+}
