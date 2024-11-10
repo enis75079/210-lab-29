@@ -159,17 +159,24 @@ void simInventory(map<string, vector<Item> >& inventory) {
     int sold = rand() % (inventory["in_stock"].size() + 1);
     int restock = rand() % (inventory["out_stock"].size() + 1);
     cout << "Sold: " << sold << " item(s)" << endl;
+    cout << "Restocked " << restock << " item(s)" << endl;
 
+    // simulates purchases. erases an item from the "in_stock" status, and puts that item into the "out_stock" status
     for (int i = 0; i < sold && !(inventory["in_stock"].empty()); i++) {
-        int index = rand() % (inventory["in_stock"].size() + 1);
+        int soldIndex = rand() % (inventory["in_stock"].size());
 
-        Item soldItem = inventory["in_stock"][index];
-        inventory["in_stock"].erase(inventory["in_stock"].begin() + index);
+        Item soldItem = inventory["in_stock"][soldIndex];
+        inventory["in_stock"].erase(inventory["in_stock"].begin() + soldIndex);
         inventory["out_stock"].push_back(soldItem);
         cout << soldItem.name << " " << soldItem.type << endl;
     }
-
+    // simulates restocking. erases an item from the "out_stock" status, and puts that item into the "in_stock" status
     for (int i = 0; i < sold && !(inventory["in_stock"].empty()); i++ ) {
+        int restockIndex = rand() % (inventory["out_stock"].size());
 
+        Item restockItem = inventory["out_stock"][restockIndex];
+        inventory["out_stock"].erase(inventory["out_stock"].begin() + restockIndex);
+        inventory["in_stock"].push_back(restockItem);
+        cout << restockItem.name << " " << restockItem.type << endl;
     }
 }
