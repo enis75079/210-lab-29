@@ -230,5 +230,6 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
 
     ofstream file("items.txt", ios::app);
     file << userName << " " << cType << " " << stock << endl;
+    file.close();
     cout << "New Item: " << cType << " (" << stock << ")" << endl; 
 }
