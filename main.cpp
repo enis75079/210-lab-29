@@ -44,14 +44,6 @@ int main() {
     while (items >> name >> type >> status) {
         inventory[status].push_back(Item{name, type});
     }    
-
-    // displays the items from the file and outputs them in a formatted fashion
-    for (const auto& x : inventory) {
-        cout << x.first << " ";
-        for (const auto& y : x.second) {
-            cout << y.name << " " << y.type << endl;
-        }
-    }
     
     for (int week = 1; week <= 52; week++) {
         bool nextWeek = false;
