@@ -26,7 +26,7 @@ struct Item {
 // function prototypes
 // function to simulate inventory management over the 52 week period
 // paramenters: map of the clothing items, intervals for the months
-void simInventory();
+void simInventory(map<string, vector<Item> >);
 void inventorySize(map<string, vector<Item> >);
 void specificStatus(string, map<string, vector<Item> >);
 
@@ -92,11 +92,11 @@ int main() {
                 }
             } else if (userChoice == 3) {
                 // continue to next week
+                simInventory(inventory);
                 cout << "Starting week:" << (week + 1) << " " << endl;
                 nextWeek = true;
             } else if (userChoice == 4) {
                 // terminates the program early
-                simInventory(inventory);
                 cout << "Ended on week: " << (week + 1) << endl;
                 return 0;
             } else {
@@ -153,9 +153,18 @@ void specificStatus(string status, map<string, vector<Item> > inventory) {
     cout << endl;
 }
 // simInventory function. function to simulate the inventory
-void simInventory(map<string, vector<Item> >& inventory) {
+void simInventory(map<string, vector<Item> > inventory) {
     srand(time(0));
 
-    int sold = rand() % (inventory["in_stock"].size());
-    cout << "Sold: " << sold << endl;
+    int sold = rand() % (inventory["in_stock"].size() + 1);
+    cout << "Sold: " << sold << " item(s)" << endl;
+
+    for (int i = 0; i < sold && (inventory["in_stock"].empty()); i++) {
+        int index = rand() % (inventory["in_stock"].size() + 1);
+
+        Item soldItem = inventory["in_stock"][index];
+        inventory["in_stock"].erase(inventory["in_stock"].begin() + index);
+        inventory["out_stock"].push_back(soldItem);
+        cout << soldItem.name << " " << soldItem.type << endl;
+    }
 }
