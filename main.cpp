@@ -28,6 +28,7 @@ struct Item {
 void simInventory(map<string, vector<Item> >&);
 void inventorySize(map<string, vector<Item> >);
 void specificStatus(string, map<string, vector<Item> >);
+void
 
 // define main
 int main() {
@@ -83,8 +84,28 @@ int main() {
                     specificStatus("out_stock", inventory);
                 }
             } else if (userChoice == 3) {
-                cout << "Clothing Type: "<< endl
-                cout << "";
+                int typeChoice = 0;
+                cout << "Clothing Type: "<< endl;
+                cout << "[1] Shirts" << endl; 
+                cout << "[2] Pants" << endl; 
+                cout << "[3] Shoes" << endl; 
+                cout << "Choice: ";
+                cin >> typeChoice;
+                
+                cout << endl;
+                string itemName = "";
+                cout << "Name of the product: ";
+                getline(cin, itemName);
+                cin.ignore();
+
+                cout << endl;
+                int availability = 0;
+                cout << "Availability: "<< endl;
+                cout << "[1] In Stock" << endl; 
+                cout << "[2] Discount" << endl; 
+                cout << "[3] Out of Stock" << endl; 
+                cout << "Choice: ";
+                cin >> availability;
             } else if (userChoice == 4) {
                 // continue to next week
                 simInventory(inventory);
