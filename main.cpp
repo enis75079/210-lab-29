@@ -227,7 +227,7 @@ void addItem(string userName, int userType, int userAvail, map<string, vector<It
         stock = "out_stock";
         inventory[stock].push_back(newItem);
     }
-
+    cout << endl;
     ofstream file("items.txt", ios::app);
     file << userName << " " << cType << " " << stock << endl;
     file.close();
