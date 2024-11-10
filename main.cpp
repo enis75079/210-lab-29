@@ -36,6 +36,7 @@ int main() {
     string name;
     string type;
     string status;
+    bool nextWeek = false;
     int userChoice = 0;
 
     // read data from a file containing information on the items and input them to the map
@@ -54,7 +55,7 @@ int main() {
     }
     
     for (int week = 1; week <= 52; week++) {
-        while (userChoice != 3) {
+        while (nextWeek != true) {
             // displays the management interface
             cout << "Management Mode: " << endl;
             cout << "[1] Total Inventory" << endl;
@@ -85,7 +86,7 @@ int main() {
             } else if (userChoice == 3) {
                 // continue to next week
                 cout << "Starting week:" << week << " " << endl;
-                continue;
+                nextWeek = true;
             } else {
                 cout << "Invalid input. Program has been terminated." << endl;
                 break;
