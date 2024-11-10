@@ -36,8 +36,7 @@ int main() {
     string name;
     string type;
     string status;
-    bool nextWeek = false;
-    int userChoice = 0;
+    
 
     // read data from a file containing information on the items and input them to the map
     ifstream items("items.txt");
@@ -55,19 +54,23 @@ int main() {
     }
     
     for (int week = 1; week <= 52; week++) {
+        bool nextWeek = false;
+        int userChoice = 0;
+
         while (nextWeek != true) {
             // displays the management interface
-            cout << "Management Mode: " << endl;
+            cout << "\nManagement Mode: " << "(week: " << week << ")" << endl;
             cout << "[1] Total Inventory" << endl;
             cout << "[2] Specific Inventory Stock" << endl;
             cout << "[3] Next Week" << endl;
+            cout << "[4] Quit Early" << endl;
             cout << "Choice: ";
             cin >> userChoice;
             cout << endl;
             if (userChoice == 1) {
                 // displays the total inventory
+                cout << "Total Inventory: ";
                 inventorySize(inventory);
-                cout << endl;
             } else if (userChoice == 2) {
                 // asks user for the specific type of clothing's stock
                 int stockChoice = 0;
@@ -77,17 +80,24 @@ int main() {
                 cout << "Choice: ";
                 cin >> stockChoice;
                 if (stockChoice == 1) {
+                    cout << "In Stock Inventory: ";
                     specificStatus("in_stock", inventory);
                 } else if (stockChoice == 2) {
+                    cout << "Discount Inventory: ";
                     specificStatus("discount", inventory);
                 } else if (stockChoice == 3) {
+                    cout << "Out of Stock Inventory: ";
                     specificStatus("out_stock", inventory);
                 }
             } else if (userChoice == 3) {
                 // continue to next week
-                cout << "Starting week:" << week << " " << endl;
+                cout << "Starting week:" << (week + 1) << " " << endl;
                 nextWeek = true;
+            } else if (userChoice == 4) {
+                // terminates the program early
+                cout << "Ended on week: " << (week + 1) << endl;
             } else {
+                // if user inputs a value that doesnt correspond with the management prompt
                 cout << "Invalid input. Program has been terminated." << endl;
                 break;
             }
@@ -136,7 +146,7 @@ void specificStatus(string status, map<string, vector<Item> > inventory) {
             total++;
         }
     }
-    cout << total << endl;
+    cout << total;
     cout << endl;
 }
 // simInventory function. function to simulate the inventory
