@@ -116,7 +116,7 @@ int main() {
                 nextWeek = true;
             } else if (userChoice == 5) {
                 // terminates the program early
-                cout << "Ended on week: " << (week + 1) << endl;
+                cout << "Ended on week: " << (week) << endl;
                 return 0;
             } else {
                 // if user inputs a value that doesnt correspond with the management prompt
