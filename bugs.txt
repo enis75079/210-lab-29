@@ -1,0 +1,10 @@
+1. forgot passing by reference for some functions causing incorrect parameter reads
+2. tried using getline to read the user string in the management menu but caused an infinite loop. used cin instead
+3. initially had the while loop be based on the user choice (and if they choose the exit integer, the program will terminate) but this caused an infinite loop when the for loop was implemented. So i used returns instead
+4. when calculating the week, forgot the additional plus 1
+5. when trying to add items to the text file, all the items previously written on the text file would get deleted. i used the std::app to get rid of this
+6. when doing the simulations for the purchases and restocks, I had trouble coming up with the conditions
+7. originally was coding on mac, and I had problems with "auto". my mac doesnt support cpp11
+8. figuring out the formatting and how it would look in the text file took me some time to figure out
+9. forgot that >> is meant to be > > for the vector formatting
+10. accidently passed by reference for the inventory size functions, causing false results.
