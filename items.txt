@@ -5,3 +5,4 @@ Jeans Pants discount
 Jeans Pants discount
 RunningShoes Shoes out_stock
 T-Shirt Shirts out_stock
+Jeans Pants in_stock
